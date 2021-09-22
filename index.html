@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="abcd">
+        <div style='float: left;'>
+            <br>
+            <br>
+            <!-- <p style="padding-left:16px; font-size: 20px;">Amount(<?php echo $market; ?>) | Price(<?php echo $bm; ?>) &nbsp | Total(<?php echo $bm; ?>)</p> -->
+            <div class="panel-hello scrollbar" id="style-11">
+                <div class="data-table">
+                    <table class="table table-hello table-bordered table-hover force-overflow" id="btcaddresses">
+                        <tbody style="border: 1px solid green; height: 300px; overflow-y: scroll;">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function loadXMLDoc() {
+                var xmlhttp;
+                if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else {// code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("btcaddresses").innerHTML = xmlhttp.responseText; // your div
+                    }
+                }
+                xmlhttp.open("GET", "getdatabase.php", true); //your php file
+                xmlhttp.send();
+            }
+            window.setInterval(function () {
+                loadXMLDoc();
+            }, 1000);
+        </script>
+</body>
+<h1>Temperature and Humidity Sensor Readings</h1>
+</html>
+
+
